@@ -1,0 +1,20 @@
+<a [ngClass]="{'list-group-item': true,
+				'flex-column': true,
+				'align-items-start': true,
+				'list-group-item-success': loveIts > 0 , 
+				'list-group-item-danger': loveIts < 0 }"> 
+	<div class="d-flex w-100 justify-content-between">
+		<h3 class="mb-1">{{ title }}</h3>
+		<small class="text-muted">Created at: {{ created_at | date: "short" }}</small>
+  </div>
+  <div class="d-flex w-100 justify-content-between">
+		<p class="mb-1">{{ content }}</p>
+		<button class="btn btn-success" 
+	              (click)="onLoveIts()">Likez !</button>
+		<button class="btn btn-danger" 
+	              (click)="onNotLoveIts()">Pas Likez !</button>
+	</div>
+  <div class="d-flex w-100 justify-content-between">
+	  <small class="text-muted">LoveIts: {{ loveIts }}</small>
+	</div>
+</a>>
