@@ -81,7 +81,7 @@ export class AppareilService {
 
   saveAppareilsToServer() {
     this.httpClient
-    .post('https://http-client-openclassroom.firebaseio.com/appareils.json', this.appareils)
+    .put('https://http-client-openclassroom.firebaseio.com/appareils.json', this.appareils)
     .subscribe(
       () => {
         console.log("Enregistrement terminé");
@@ -90,6 +90,20 @@ export class AppareilService {
         console.log("Erreur de sauvegarde ! " + Error);
       }
       );
+  }
+
+  getAppareilsFromServer() {
+    this.httpClient
+    .get<any[]>('https://http-client-openclassroom.firebaseio.com/appareils.json')
+    .subscribe(
+      (response) => {
+        this.appareils = response;
+        this.emitAppareilSubject();
+      },
+      (error) => {
+        console.log("Erreur de chargement " + Error);
+      }
+    );
   }
 
 }
